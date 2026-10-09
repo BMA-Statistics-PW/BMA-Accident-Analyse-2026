@@ -52,7 +52,7 @@ Dashboard สรุปผู้เสียชีวิตและผู้บ�
 ├── LICENSE · CITATION.cff
 ```
 
-## วิธีสร้างใหม่ (เมื่อมีข้อมูลชุดใหม่)
+## วิธีสร้างเมื่อมีข้อมูลชุดใหม่
 
 ```bash
 pip install pandas
@@ -63,12 +63,6 @@ python3 scripts/build.py
 ผลรวมรายเขตเท่ากับยอดรวม กทม., สัดส่วนรายชั่วโมง/ช่วงเวลารวม 100% ทุกปี และชื่อเขตใน CSV ตรงกับไฟล์ขอบเขต
 
 ## เผยแพร่ด้วย GitHub Pages
-
-1. Settings → Pages → Source: **Deploy from a branch**
-2. Branch: `main` / `(root)` → Save
-3. รอ 1–2 นาที แล้วเข้า https://bma-statistics-pw.github.io/BMA-Accident-Analyse-2026/
-
-> บัญชีฟรีเปิด Pages ได้เฉพาะ repo แบบ **public** — ก่อนเปิดควรยืนยันว่าข้อมูลเผยแพร่สาธารณะได้ และตรวจเงื่อนไขการใช้ข้อมูลของ Thairsc
 
 ## วิธีคำนวณโดยย่อ
 
