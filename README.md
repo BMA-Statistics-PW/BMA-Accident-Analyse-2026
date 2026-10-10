@@ -9,16 +9,16 @@ Dashboard สรุปผู้เสียชีวิตและผู้บ�
 
 ---
 
-## ภาพรวมผลการวิเคราะห์ (ข้อมูล ณ วันที่ 9 ตุลาคม 2569)
+## ภาพรวมผลการวิเคราะห์ (ข้อมูล ณ วันที่ 10 ตุลาคม 2569 00:00 น.)
 
 | ตัวชี้วัด | ค่า |
 |---|---|
-| ผู้เสียชีวิตสะสม ปี 2569 | **583 ราย** (เฉลี่ย 2.07 ราย/วัน) |
-| ผู้บาดเจ็บสะสม ปี 2569 | **136,359 คน** (เฉลี่ย 484 คน/วัน) |
+| ผู้เสียชีวิตสะสม ปี 2569 | **585 ราย** (เฉลี่ย 2.07 ราย/วัน) |
+| ผู้บาดเจ็บสะสม ปี 2569 | **136,825 คน** (เฉลี่ย 485 คน/วัน) |
 | อัตราเสียชีวิตต่อผู้ประสบภัย 1,000 คน | **4.26 ‰** (ปี 2568: 4.83 ‰, ปี 2565: 7.91 ‰) |
-| ประมาณการทั้งปี 2569 (เชิงเส้น) | ≈ 755 ราย / ≈ 176,493 คน |
-| ดัชนีความรุนแรงสูงสุด | **1.71 เท่า** — ผู้สูงอายุ 60 ปีขึ้นไป |
-| เขตที่มีผู้เสียชีวิตสูงสุด | **หนองจอก** 37 ราย (6.4% ของ กทม.) |
+| ประมาณการทั้งปี 2569 (เชิงเส้น) | ≈ 757 ราย / ≈ 177,096 คน |
+| ดัชนีความรุนแรงสูงสุด | **1.70 เท่า** — ผู้สูงอายุ 60 ปีขึ้นไป |
+| เขตที่มีผู้เสียชีวิตสูงสุด | **หนองจอก** 38 ราย (6.5% ของ กทม.) |
 
 ข้อสังเกตหลัก
 - ผู้เสียชีวิตลดลงต่อเนื่องทุกปี แต่ผู้บาดเจ็บที่ถูกบันทึกเพิ่มขึ้น อัตราเสียชีวิตต่อผู้ประสบภัยจึงลดลง — **ยังสรุปสาเหตุไม่ได้** อาจเป็นความรุนแรงที่ลดลงจริง หรือการรายงานผู้บาดเจ็บครอบคลุมมากขึ้น
@@ -41,28 +41,22 @@ Dashboard สรุปผู้เสียชีวิตและผู้บ�
 ## โครงสร้าง repo
 
 ```
-├── index.html                      ← หน้า Dashboard (GitHub Pages เปิดไฟล์นี้)
-├── data/
-│   ├── thairsc_bangkok_all_available_2565_2569.csv   ← ข้อมูลต้นทาง (270 แถว)
-│   ├── dashboard.json              ← ตัวเลขที่ใช้แสดง (สร้างจาก CSV)
-│   └── bangkok_districts.geojson   ← ขอบเขต 50 เขต สำหรับแผนที่
-├── scripts/build.py                ← CSV → dashboard.json + index.html
-├── src/index.template.html         ← ต้นฉบับหน้าเว็บ
-├── docs/screenshot.png
-├── LICENSE · CITATION.cff
+├── index.html      ← หน้า Dashboard ไฟล์เดียว (ข้อมูลฝังอยู่ในไฟล์; GitHub Pages เปิดไฟล์นี้)
+├── README.md
+├── LICENSE         ← MIT (โค้ด)
+└── CITATION.cff    ← รูปแบบอ้างอิง
 ```
 
-## วิธีสร้างเมื่อมีข้อมูลชุดใหม่
+ข้อมูลที่ใช้แสดงอยู่ในแท็บ `<script id="data" type="application/json">` ภายใน `index.html` (มาจากข้อมูลสรุปของ Thairsc ณ วันที่ระบุด้านบน)
+สคริปต์สร้างหน้าเว็บ ไฟล์ CSV ต้นทาง และชุดข้อมูลเชิงลึก (Power BI) เก็บไว้ในโฟลเดอร์งานภายใน ยังไม่ได้เผยแพร่ใน repo นี้
 
-```bash
-pip install pandas
-python3 scripts/build.py
-```
+## การอัปเดตข้อมูล
 
-ตัวเลขทุกค่าในหน้าเว็บมาจาก CSV ผ่านสคริปต์นี้ ไม่มีตัวเลขที่พิมพ์มือ และสคริปต์ตรวจอัตโนมัติว่า
-ผลรวมรายเขตเท่ากับยอดรวม กทม., สัดส่วนรายชั่วโมง/ช่วงเวลารวม 100% ทุกปี และชื่อเขตใน CSV ตรงกับไฟล์ขอบเขต
+แก้ค่าในบล็อก JSON ใน `index.html` แล้ว commit/push — GitHub Pages จะอัปเดตเอง ควรตรวจว่าผลรวมรายเขตเท่ากับยอดรวม กทม. และสัดส่วนรายชั่วโมง/ช่วงเวลารวม 100% ทุกปี ก่อนเผยแพร่
 
 ## เผยแพร่ด้วย GitHub Pages
+
+Settings → Pages → Source: `main` / root (เผยแพร่แล้วที่ลิงก์ Dashboard ด้านบน)
 
 ## วิธีคำนวณโดยย่อ
 
@@ -85,7 +79,7 @@ python3 scripts/build.py
 - ข้อมูลอุบัติเหตุ: [Thairsc](https://www.thairsc.com/province/10) · [data-compare](https://www.thairsc.com/data-compare)
 - แผนที่พื้นหลัง: © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright) ผ่าน [Leaflet](https://leafletjs.com) (ต้องต่ออินเทอร์เน็ต ถ้าโหลดไม่ได้ หน้าเว็บยังใช้งานกราฟและตารางได้) — `tile.openstreetmap.org` มี[นโยบายการใช้งาน](https://operations.osmfoundation.org/policies/tiles/) หากมีผู้เข้าชมจำนวนมากควรเปลี่ยนผู้ให้บริการ tile
 - ขอบเขต 50 เขต: [OpenGISData-Thailand](https://github.com/chingchai/OpenGISData-Thailand) (chingchai) — ตรวจเงื่อนไขการใช้งานก่อนเผยแพร่ หรือเปลี่ยนเป็นไฟล์ขอบเขตของหน่วยงาน
-- License: MIT (เฉพาะโค้ดใน `scripts/` และ `src/`) · ข้อมูลต้นทางเป็นของ Thairsc
+- License: MIT (โค้ดในไฟล์ `index.html`) · ข้อมูลต้นทางเป็นของ Thairsc
 
 ---
 
@@ -93,13 +87,13 @@ python3 scripts/build.py
 
 A single-file, dependency-light dashboard of Bangkok road-crash deaths and injuries (B.E. 2565–2569 / 2022–2026) built from [Thairsc](https://www.thairsc.com/province/10) summary data, for policy presentation.
 
-**Headline (as of 9 Oct 2026):** 583 deaths and 136,359 injuries in 2026 (B.E. 2569, partial year). Deaths per 1,000 victims fell from 7.91 (2022) to 4.26 (2026), but rising recorded injuries mean this cannot yet be read as a true severity decline. Thirteen districts account for half of all deaths; four (Nong Chok, Khlong Sam Wa, Lat Krabang, Thawi Watthana) show significantly more deaths than expected (z ≥ 3). People aged 60+ are 1.71× over-represented among deaths relative to victims.
+**Headline (as of 10 Oct 2026, 00:00):** 585 deaths and 136,825 injuries in 2026 (B.E. 2569, partial year). Deaths per 1,000 victims fell from 7.91 (2022) to 4.26 (2026), but rising recorded injuries mean this cannot yet be read as a true severity decline. Thirteen districts account for half of all deaths; four (Nong Chok, Khlong Sam Wa, Lat Krabang, Thawi Watthana) show significantly more deaths than expected (z ≥ 3). People aged 60+ are 1.70× over-represented among deaths relative to victims.
 
 **Tabs:** yearly overview · districts (OpenStreetMap choropleth, ranking, scatter, sortable table) · risk groups · time of day · data & caveats. Responsive for phone, tablet and desktop; Sarabun font; dark mode.
 
-**Rebuild:** `pip install pandas && python3 scripts/build.py` — regenerates `data/dashboard.json` and `index.html` with built-in consistency checks.
-**Deploy:** public repo → Settings → Pages → `main` / root.
+**Update:** edit the embedded JSON block in `index.html` and push; GitHub Pages redeploys automatically.
+**Deploy:** Settings → Pages → `main` / root (already live).
 
-**Caveats:** 2026 is a partial year and figures are revised retroactively; district counts are small; no incident-level data, so no per-capita or per-VKT rates. Check Thairsc's terms and the boundary-file license before making the repo public.
+**Caveats:** 2026 is a partial year and figures are revised retroactively; district counts are small; no incident-level data, so no per-capita or per-VKT rates. Check Thairsc's terms and the boundary-data license.
 
 Prepared by PRAPAWADEE WACHIRAPUT, Statistics and Research Group, Policy and Planning Division, Traffic and Transportation Department, Bangkok Metropolitan Administration · © Prapawadee_W.

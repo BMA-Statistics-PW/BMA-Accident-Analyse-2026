@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "If you use this dashboard, please cite it and the original data source (Thairsc)."
+title: "Bangkok Road Crash Dashboard (Thairsc data, B.E. 2565-2569)"
+authors:
+  - name: "Prapawadee_W."
+date-released: 2026-10-09
+license: MIT
